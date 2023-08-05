@@ -54,10 +54,8 @@ public class Schedule extends BaseTimeEntity {
 
     private String imageUrl;
 
-    public Schedule(Team team, CategoryDTO.UserDayRequestDTO dayDTO, String imageUrl){
+    public Schedule(Team team,String imageUrl){
         this.team = team;
-        this.startDate = dayDTO.getStartDate();
-        this.endDate = dayDTO.getEndDate();
         this.imageUrl = imageUrl;
     }
 
