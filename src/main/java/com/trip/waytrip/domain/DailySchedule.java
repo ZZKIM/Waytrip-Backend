@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Builder
@@ -23,4 +25,7 @@ public class DailySchedule {
 
     @ManyToOne(optional = false)
     private Schedule schedule;
+
+    @OneToMany(mappedBy = "daily_schedule", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<DailyPlace> dailyPlaces = new ArrayList<>();
 }

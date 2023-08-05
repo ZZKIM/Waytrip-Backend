@@ -8,6 +8,10 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Builder
 @AllArgsConstructor
@@ -27,9 +31,21 @@ public class Place {
     @Enumerated(EnumType.STRING)
     private DistrictEnum district;
 
-    @Column(nullable = false)
-    private Double latitude;
+    @Embedded
+    private Address address;
+
+    @Column
+    private String openTime;
+
+    @Column
+    private String closeTime;
 
     @Column(nullable = false)
-    private Double longitude;
+    private String detail;
+
+    @Column(nullable = false)
+    private String imageUrl;
+
+    @JoinColumn
+    private List<String> keywords = new ArrayList<>();
 }

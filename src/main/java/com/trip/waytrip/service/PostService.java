@@ -1,7 +1,7 @@
 package com.trip.waytrip.service;
 
 import com.trip.waytrip.domain.Image;
-import com.trip.waytrip.domain.Post;
+import com.trip.waytrip.domain.Album;
 import com.trip.waytrip.dto.response.post.PostCreateResponse;
 import com.trip.waytrip.dto.response.post.PostFindAllResponse;
 import com.trip.waytrip.dto.response.post.PostFindResponse;
@@ -49,7 +49,7 @@ public class PostService {
     }
 
     public PostCreateResponse savePost(String title, String content, Long scheduleId, List<MultipartFile> multipartFiles) {
-        Post savePost = posts.save(Post.builder()
+        Album savePost = posts.save(Album.builder()
                 .title(title)
                 .content(content)
                 .schedule(schedules.findById(scheduleId)
@@ -66,7 +66,7 @@ public class PostService {
     }
 
     public void updatePost(final Long postId, List<MultipartFile> multipartFiles, String title, String content) {
-        Post post = posts.findById(postId)
+        Album post = posts.findById(postId)
                 .orElseThrow(() -> new NoSuchElementException(POST));
 
         if(!SecurityUtil.getCurrentUserEmail().equals(post.getCreatedBy()))
@@ -83,7 +83,7 @@ public class PostService {
     }
 
     public void deletePost(final Long postId) {
-        Post post = posts.findById(postId)
+        Album post = posts.findById(postId)
                 .orElseThrow(() -> new NoSuchElementException(POST));
 
         if(!SecurityUtil.getCurrentUserEmail().equals(post.getCreatedBy()))

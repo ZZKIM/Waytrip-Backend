@@ -20,5 +20,5 @@ public class Image {
     private String url;
 
     @ManyToOne(optional = false)
-    private Post post;
+    private Album post;
 }

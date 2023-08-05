@@ -12,6 +12,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,17 +30,17 @@ public class Schedule extends AuditingFields {
     private String name;
 
     @Column(nullable = false)
-    private String startDate;
+    private LocalDate startDate;
 
     @Column(nullable = false)
-    private String endDate;
+    private LocalDate endDate;
 
     @Builder.Default
     private boolean isDone = false;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(nullable = false)
-    private User user;
+    private Team team;
 
     @OneToMany(mappedBy = "schedule", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @Builder.Default
@@ -51,10 +52,13 @@ public class Schedule extends AuditingFields {
     @OneToMany(mappedBy = "schedule", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<District> district = new ArrayList<>();
 
-    public Schedule(User user, CategoryDTO.UserDayRequestDTO dayDTO){
-        this.user = user;
+    private String imageUrl;
+
+    public Schedule(Team team, CategoryDTO.UserDayRequestDTO dayDTO, String imageUrl){
+        this.team = team;
         this.startDate = dayDTO.getStartDate();
         this.endDate = dayDTO.getEndDate();
+        this.imageUrl = imageUrl;
     }
 
     public void setDistrict(List<District> district){
