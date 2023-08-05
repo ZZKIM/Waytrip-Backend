@@ -1,4 +1,4 @@
-package com.trip.demo;
+package com.trip.waytrip;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
