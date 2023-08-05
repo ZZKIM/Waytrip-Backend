@@ -1,15 +1,15 @@
 package com.trip.waytrip.oauth;
 
 
-import com.trip.waytrip.exception.NoAuthorizationException;
-import com.trip.waytrip.exception.NoSuchElementException;
+import com.trip.waytrip.global.exception.NoAuthorizationException;
+import com.trip.waytrip.global.exception.NoSuchElementException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.util.StringUtils;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import static com.trip.waytrip.domain.constant.Constants.*;
+import static com.trip.waytrip.global.constant.Constants.*;
 
 @RequiredArgsConstructor
 public class SecurityUtil {

@@ -5,8 +5,8 @@ import com.trip.waytrip.domain.Album;
 import com.trip.waytrip.dto.response.post.PostCreateResponse;
 import com.trip.waytrip.dto.response.post.PostFindAllResponse;
 import com.trip.waytrip.dto.response.post.PostFindResponse;
-import com.trip.waytrip.exception.NoAuthorizationException;
-import com.trip.waytrip.exception.NoSuchElementException;
+import com.trip.waytrip.global.exception.NoAuthorizationException;
+import com.trip.waytrip.global.exception.NoSuchElementException;
 import com.trip.waytrip.oauth.SecurityUtil;
 import com.trip.waytrip.repository.ImageRepository;
 import com.trip.waytrip.repository.PostRepository;
@@ -20,7 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.trip.waytrip.domain.constant.Constants.*;
+import static com.trip.waytrip.global.constant.Constants.*;
 
 @Service
 @RequiredArgsConstructor
