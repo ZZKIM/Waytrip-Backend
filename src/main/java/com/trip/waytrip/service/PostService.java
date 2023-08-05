@@ -8,8 +8,6 @@ import com.trip.waytrip.dto.response.post.PostFindResponse;
 import com.trip.waytrip.global.exception.NoAuthorizationException;
 import com.trip.waytrip.global.exception.NoSuchElementException;
 import com.trip.waytrip.oauth.SecurityUtil;
-import com.trip.waytrip.repository.ImageRepository;
-import com.trip.waytrip.repository.PostRepository;
 import com.trip.waytrip.repository.ScheduleRepository;
 import com.trip.waytrip.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
