@@ -5,6 +5,7 @@ import com.trip.waytrip.domain.category.Theme;
 import com.trip.waytrip.domain.category.District;
 
 
+import com.trip.waytrip.domain.constant.AuditingFields;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,7 +20,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Schedule {
+public class Schedule extends AuditingFields {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -50,25 +51,10 @@ public class Schedule {
     @OneToMany(mappedBy = "schedule", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<District> district = new ArrayList<>();
 
-    private Integer withPeople;
-
-    private Integer budget;
-
-    private String transportation;
-
     public Schedule(User user, CategoryDTO.UserDayRequestDTO dayDTO){
         this.user = user;
         this.startDate = dayDTO.getStartDate();
         this.endDate = dayDTO.getEndDate();
-    }
-
-    public void setBasicInfo(Integer withPeople, Integer budget){
-        this.withPeople = withPeople;
-        this.budget = budget;
-    }
-
-    public void setTransportation(String transportation){
-        this.transportation = transportation;
     }
 
     public void setDistrict(List<District> district){

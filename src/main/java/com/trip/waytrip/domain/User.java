@@ -31,4 +31,8 @@ public class User {
     @Builder.Default
     @ToString.Exclude
     private List<Schedule> schedules = new ArrayList<>();
+
+    @JoinColumn(name = "team_id")
+    @ManyToOne(optional = false)
+    private Team team;
 }

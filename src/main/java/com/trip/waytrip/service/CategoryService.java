@@ -36,7 +36,7 @@ public class CategoryService {
         }
 
         schedule.setDistrict(districtList);
-        schedule.setBasicInfo(userDistrictRequestDTO.getWithPeople(), userDistrictRequestDTO.getBudget());
+        schedule.setBasicInfo(userDistrictRequestDTO.getWithPeople());
     }
 
 
