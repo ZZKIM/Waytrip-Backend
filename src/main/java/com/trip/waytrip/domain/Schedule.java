@@ -1,6 +1,5 @@
 package com.trip.waytrip.domain;
 
-import com.trip.waytrip.api.dto.CategoryDTO;
 import com.trip.waytrip.domain.category.Theme;
 import com.trip.waytrip.domain.category.District;
 
