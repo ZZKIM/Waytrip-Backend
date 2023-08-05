@@ -1,11 +1,11 @@
 package com.trip.waytrip.controller;
 
-import com.gdsc.wherewego.dto.request.PostCreateRequest;
-import com.gdsc.wherewego.dto.request.PostUpdateRequest;
-import com.gdsc.wherewego.dto.response.post.PostCreateResponse;
-import com.gdsc.wherewego.dto.response.post.PostFindAllResponse;
-import com.gdsc.wherewego.dto.response.post.PostFindResponse;
-import com.gdsc.wherewego.service.PostService;
+import com.trip.waytrip.dto.request.PostCreateRequest;
+import com.trip.waytrip.dto.request.PostUpdateRequest;
+import com.trip.waytrip.dto.response.post.PostCreateResponse;
+import com.trip.waytrip.dto.response.post.PostFindAllResponse;
+import com.trip.waytrip.dto.response.post.PostFindResponse;
+import com.trip.waytrip.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

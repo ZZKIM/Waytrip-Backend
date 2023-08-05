@@ -2,7 +2,7 @@ package com.trip.waytrip.oauth.kakao;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.gdsc.wherewego.oauth.OAuthInfoResponse;
+import com.trip.waytrip.oauth.OAuthInfoResponse;
 import lombok.Getter;
 
 @Getter

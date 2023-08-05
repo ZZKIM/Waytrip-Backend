@@ -1,6 +1,6 @@
 package com.trip.waytrip.oauth.kakao;
 
-import com.gdsc.wherewego.oauth.OAuthLoginParams;
+import com.trip.waytrip.oauth.OAuthLoginParams;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.util.LinkedMultiValueMap;

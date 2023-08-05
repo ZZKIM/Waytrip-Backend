@@ -1,8 +1,9 @@
 package com.trip.waytrip.controller;
 
-import com.gdsc.wherewego.oauth.AuthTokens;
-import com.gdsc.wherewego.oauth.kakao.KakaoLoginParams;
-import com.gdsc.wherewego.service.OAuthLoginService;
+
+import com.trip.waytrip.oauth.AuthTokens;
+import com.trip.waytrip.oauth.kakao.KakaoLoginParams;
+import com.trip.waytrip.service.OAuthLoginService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,8 +1,9 @@
 package com.trip.waytrip.controller;
 
-import com.gdsc.wherewego.domain.User;
-import com.gdsc.wherewego.oauth.AuthTokensGenerator;
-import com.gdsc.wherewego.repository.UserRepository;
+
+import com.trip.waytrip.domain.User;
+import com.trip.waytrip.oauth.AuthTokensGenerator;
+import com.trip.waytrip.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
