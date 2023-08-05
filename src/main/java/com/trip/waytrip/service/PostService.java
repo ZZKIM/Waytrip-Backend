@@ -1,6 +1,6 @@
 package com.trip.waytrip.service;
 
-import com.trip.waytrip.domain.Image;
+import com.trip.waytrip.global.imageStore.Image;
 import com.trip.waytrip.domain.Album;
 import com.trip.waytrip.dto.response.post.PostCreateResponse;
 import com.trip.waytrip.dto.response.post.PostFindAllResponse;

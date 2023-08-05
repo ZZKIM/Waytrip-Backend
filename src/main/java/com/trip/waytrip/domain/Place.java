@@ -46,6 +46,7 @@ public class Place {
     @Column(nullable = false)
     private String imageUrl;
 
-    @JoinColumn
+    @ElementCollection(fetch = FetchType.LAZY)
+    @Column(name = "keywords")
     private List<String> keywords = new ArrayList<>();
 }

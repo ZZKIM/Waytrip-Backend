@@ -1,6 +1,5 @@
 package com.trip.waytrip.domain;
 
-import com.trip.waytrip.domain.constant.AuditingFields;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,7 +19,7 @@ public class Album{
     @OneToOne
     private Team team;
 
-    @OneToMany(mappedBy = "album", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ElementCollection(fetch = FetchType.LAZY)
     @Builder.Default
-    private final Set<Image> images = new LinkedHashSet<>();
+    private final Set<String> imageURLs = new LinkedHashSet<>();
 }

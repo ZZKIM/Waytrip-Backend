@@ -5,7 +5,7 @@ import com.trip.waytrip.domain.category.Theme;
 import com.trip.waytrip.domain.category.District;
 
 
-import com.trip.waytrip.domain.constant.AuditingFields;
+import com.trip.waytrip.global.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,7 +21,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Schedule extends AuditingFields {
+public class Schedule extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

@@ -1,6 +1,6 @@
 package com.trip.waytrip.domain;
 
-import com.trip.waytrip.domain.constant.AuditingFields;
+import com.trip.waytrip.global.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -9,7 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Memo extends AuditingFields {
+public class Memo extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
