@@ -17,15 +17,15 @@ import java.util.List;
 public class DailyPlace {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @ManyToOne(optional = false)
     private DailySchedule dailySchedule;
 
-    @JoinColumn
-    @OneToMany(mappedBy = "daily_place")
+    //@JoinColumn
+    @OneToMany(mappedBy = "dailyPlace", cascade = CascadeType.ALL)
     private List<Memo> memos = new ArrayList<>();
 
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Place place;
 }

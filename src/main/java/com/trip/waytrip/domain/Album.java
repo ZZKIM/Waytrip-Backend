@@ -14,7 +14,7 @@ import java.util.Set;
 public class Album{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @OneToOne
     private Team team;

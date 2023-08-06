@@ -18,7 +18,7 @@ import java.util.List;
 public class DailySchedule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(nullable = false)
     private LocalDate date;
@@ -26,6 +26,6 @@ public class DailySchedule {
     @ManyToOne(optional = false)
     private Schedule schedule;
 
-    @OneToMany(mappedBy = "daily_schedule", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "dailySchedule", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<DailyPlace> dailyPlaces = new ArrayList<>();
 }

@@ -32,3 +32,7 @@ jwt:
 
 openai:
   api-key: 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
+
+path:
+  images: /resources/static/images
+  ipUrl:

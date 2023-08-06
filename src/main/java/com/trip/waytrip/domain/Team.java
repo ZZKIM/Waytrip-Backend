@@ -27,7 +27,7 @@ public class Team {
     @OneToOne
     private Album album;
 
-    @JoinColumn
+    //@JoinColumn
     @OneToMany(mappedBy = "team")
     private List<User> users = new ArrayList<>();
 }

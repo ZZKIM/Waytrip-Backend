@@ -12,7 +12,7 @@ import lombok.*;
 public class Memo extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Setter
     @Column(nullable = false, length = 50)
@@ -23,10 +23,10 @@ public class Memo extends BaseTimeEntity {
     private String content;
 
     @JoinColumn(name = "user_id")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private User user;
 
     @JoinColumn(name = "daily_place_id")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private DailyPlace dailyPlace;
 }
