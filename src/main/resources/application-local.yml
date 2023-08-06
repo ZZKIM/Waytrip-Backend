@@ -29,3 +29,6 @@ oauth:
 
 jwt:
   secret-key: KimGaheeZZanghahaha1234iwanttogohomerightnow12345ewrasgdhfjydthsfaedefsdthfjghkhfhdfgsfad
+
+openai:
+  api-key: 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
