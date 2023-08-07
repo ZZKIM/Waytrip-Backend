@@ -28,13 +28,15 @@ public class User {
     @Builder.Default
     private String profileUrl = null;
 
-    @JoinColumn(name = "team_id")
-    @ManyToOne(optional = false)
-    private Team team;
+//    @JoinColumn(name = "team_id")
+//    @ManyToOne(optional = false)
+//    private Team team;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<UserTeam> userTeams = new ArrayList<>();
 
-    public void joinTeam(Team team) {
-        this.team = team;
-    }
+//    public void joinTeam(Team team) {
+//        this.team = team;
+//    }
     public void updateProfile(UserDto.Request userDto){
         this.nickname = userDto.getNickname();
         this.email = userDto.getEmail();

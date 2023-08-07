@@ -59,6 +59,7 @@ public class Schedule extends BaseTimeEntity {
         this.startDate = requestDto.getStartDate();
         this.endDate = requestDto.getEndDate();
         this.team = team;
+        team.setSchedule(this);
     }
     public void update(ScheduleDto.RequestDto requestDto){
         this.name = requestDto.getName();

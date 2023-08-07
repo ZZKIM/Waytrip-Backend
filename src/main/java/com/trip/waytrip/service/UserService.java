@@ -1,9 +1,11 @@
 package com.trip.waytrip.service;
 import com.trip.waytrip.domain.Team;
 import com.trip.waytrip.domain.User;
+import com.trip.waytrip.domain.UserTeam;
 import com.trip.waytrip.dto.UserDto;
 import com.trip.waytrip.repository.TeamRepository;
 import com.trip.waytrip.repository.UserRepository;
+import com.trip.waytrip.repository.UserTeamRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +20,7 @@ import java.util.stream.Collectors;
 public class UserService {
     private final UserRepository userRepository;
     private final TeamRepository teamRepository;
+    private final UserTeamRepository userTeamRepository;
 
     // Create
     @Transactional
@@ -64,13 +67,14 @@ public class UserService {
     // Join team
     @Transactional
     public void joinTeam(Long userId, Long teamId) {
-        User user = userRepository.findById(userId)
-                .orElseThrow(() -> new IllegalStateException("User not found."));
-        Team team = teamRepository.findById(teamId)
-                .orElseThrow(() -> new IllegalStateException("Team not found."));
+        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
+        Team team = teamRepository.findById(teamId).orElseThrow(() -> new RuntimeException("Team not found"));
 
-        team.addUser(user);
-        teamRepository.save(team); // This line may not be required depending on your JPA implementation.
+        UserTeam userTeam = UserTeam.builder()
+                .user(user)
+                .team(team)
+                .build();
 
+        userTeamRepository.save(userTeam);
     }
 }

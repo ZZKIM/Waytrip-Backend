@@ -21,13 +21,18 @@ public class ScheduleService {
     private final ScheduleRepository scheduleRepository;
     private final TeamRepository teamRepository;
     private final UserRepository userRepository;
+    private final UserService userService;
     public void createTeamAndFirstSchedule(ScheduleDto.FirstRequestDto requestDto, Long userId){
+
+        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
+
         Team team = new Team();
-        User user = userRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("User not found."));
-        team.addUser(user);
         teamRepository.save(team);
+
         Schedule schedule = new Schedule(requestDto, team);
         scheduleRepository.save(schedule);
+
+        userService.joinTeam(user.getId(), team.getId());
 
     }
     // Retrieve all schedules
