@@ -48,7 +48,7 @@ public class DailyPlaceDto {
             this.dailyScheduleId = dailyPlace.getDailySchedule().getId();
             this.placeId = dailyPlace.getPlace().getId();
             this.memos = dailyPlace.getMemos().stream()
-                    .map(MemoDto::new)
+                    .map(MemoDto.BasicMemoDto::new)
                     .collect(Collectors.toList());
         }
     }

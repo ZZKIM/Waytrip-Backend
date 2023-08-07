@@ -17,26 +17,9 @@ public class MemoService {
     private final MemoRepository memoRepository;
     private final UserRepository userRepository;
     private final DailyPlaceRepository dailyPlaceRepository;
-    public MemoDto.Response addMemo(Long dailyPlaceId, MemoDto.CreateRequest request) {
-        DailyPlace dailyPlace = dailyPlaceRepository.findById(dailyPlaceId)
-                .orElseThrow(() -> new IllegalArgumentException("DailyPlace not found"));
 
-        Memo memo = Memo.builder()
-                .title(request.getTitle())
-                .content(request.getContent())
-                .dailyPlace(dailyPlace)
-                .build();
-
-        Memo savedMemo = memoRepository.save(memo);
-
-        return MemoDto.Response.builder()
-                .id(savedMemo.getId())
-                .title(savedMemo.getTitle())
-                .content(savedMemo.getContent())
-                .build();
-    }
     @Transactional
-    public Long createMemo(MemoDto.BasicMemoDto memoDto) {
+    public void createMemo(MemoDto.BasicMemoDto memoDto) {
         User user = userRepository.findById(memoDto.getUserId())
                 .orElseThrow(() -> new RuntimeException("User not found"));
         DailyPlace dailyPlace = dailyPlaceRepository.findById(memoDto.getDailyPlaceId())
@@ -50,6 +33,5 @@ public class MemoService {
                 .build();
 
         memoRepository.save(memo);
-        return memo.getId();
     }
 }

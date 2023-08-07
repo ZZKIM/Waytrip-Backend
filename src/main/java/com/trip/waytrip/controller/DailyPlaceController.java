@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/dailyPlace")
+@RequestMapping("/api/dailyPlaces")
 @RequiredArgsConstructor
 public class DailyPlaceController {
     private final DailyPlaceService dailyPlaceService;
