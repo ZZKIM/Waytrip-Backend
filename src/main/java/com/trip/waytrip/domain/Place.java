@@ -2,6 +2,7 @@ package com.trip.waytrip.domain;
 
 import com.trip.waytrip.domain.enumCategory.DistrictEnum;
 import com.trip.waytrip.domain.enumCategory.ThemeEnum;
+import com.trip.waytrip.dto.PlaceDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,7 +32,7 @@ public class Place {
     @Enumerated(EnumType.STRING)
     private DistrictEnum district;
 
-    @Embedded
+    @OneToOne
     private Address address;
 
     @Column
@@ -49,4 +50,27 @@ public class Place {
     @ElementCollection(fetch = FetchType.LAZY)
     @Column(name = "keywords")
     private List<String> keywords = new ArrayList<>();
+
+    public Place(PlaceDto.Request requestDto, Address address) {
+        this.name = requestDto.getName();
+        this.theme = requestDto.getTheme();
+        this.district = requestDto.getDistrict();
+        this.address = address;
+        this.openTime = requestDto.getOpenTime();
+        this.closeTime = requestDto.getCloseTime();
+        this.detail = requestDto.getDetail();
+        this.imageUrl = requestDto.getImageUrl();
+        this.keywords = requestDto.getKeywords();
+    }
+
+    public void update(PlaceDto.Request requestDto) {
+        this.name = requestDto.getName();
+        this.theme = requestDto.getTheme();
+        this.district = requestDto.getDistrict();
+        this.openTime = requestDto.getOpenTime();
+        this.closeTime = requestDto.getCloseTime();
+        this.detail = requestDto.getDetail();
+        this.imageUrl = requestDto.getImageUrl();
+        this.keywords = requestDto.getKeywords();
+    }
 }
