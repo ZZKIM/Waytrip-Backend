@@ -21,20 +21,20 @@ public class UserService {
 
     // Create
     @Transactional
-    public void createUser(UserDto.Request request) {
+    public void createUser(UserDto.Request requestDto) {
         User newUser = User.builder()
-                .nickname(request.getNickname())
-                .email(request.getEmail())
-                .profileUrl(request.getProfileUrl())
+                .nickname(requestDto.getNickname())
+                .email(requestDto.getEmail())
+                .profileUrl(requestDto.getProfileUrl())
                 .build();
 
-        User savedUser = userRepository.save(newUser);
+        userRepository.save(newUser);
     }
 
     // Read (Single user)
     @Transactional(readOnly = true)
-    public Optional<UserDto.Response> getUserById(Long id) {
-        return userRepository.findById(id)
+    public Optional<UserDto.Response> getUserById(Long userId) {
+        return userRepository.findById(userId)
                 .map(UserDto.Response::new);
     }
 
@@ -48,10 +48,10 @@ public class UserService {
 
     // Update
     @Transactional
-    public void updateUser(Long id, UserDto.Request request) {
+    public void updateUser(Long id, UserDto.Request requestDto) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new IllegalStateException("User not found."));
-        user.updateProfile(request);
+        user.updateProfile(requestDto);
         userRepository.save(user);
     }
 
