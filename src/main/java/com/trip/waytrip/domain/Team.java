@@ -1,5 +1,6 @@
 package com.trip.waytrip.domain;
 
+import com.trip.waytrip.global.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,13 +14,10 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Team {
+public class Team extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(nullable = false, length = 20)
-    private String name;
 
     @OneToOne
     private Schedule schedule;

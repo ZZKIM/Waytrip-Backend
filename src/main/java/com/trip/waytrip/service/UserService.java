@@ -35,14 +35,14 @@ public class UserService {
     @Transactional(readOnly = true)
     public Optional<UserDto.Response> getUserById(Long id) {
         return userRepository.findById(id)
-                .map(user -> new UserDto.Response(user.getId(), user.getNickname(), user.getEmail(), user.getProfileUrl(), user.getTeam().getId()));
+                .map(UserDto.Response::new);
     }
 
     // Read (All users)
     @Transactional(readOnly = true)
     public List<UserDto.Response> getAllUsers() {
         return userRepository.findAll().stream()
-                .map(user -> new UserDto.Response(user.getId(), user.getNickname(), user.getEmail(), user.getProfileUrl(), user.getTeam().getId()))
+                .map(UserDto.Response::new)
                 .collect(Collectors.toList());
     }
 

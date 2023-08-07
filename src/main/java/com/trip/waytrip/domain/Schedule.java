@@ -4,6 +4,7 @@ import com.trip.waytrip.domain.category.Theme;
 import com.trip.waytrip.domain.category.District;
 
 
+import com.trip.waytrip.dto.ScheduleDto;
 import com.trip.waytrip.global.BaseTimeEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -53,16 +54,19 @@ public class Schedule extends BaseTimeEntity {
 
     private String imageUrl;
 
-    public Schedule(Team team,String imageUrl){
+    public Schedule(ScheduleDto.FirstRequestDto requestDto, Team team){
+        this.name = requestDto.getName();
+        this.startDate = requestDto.getStartDate();
+        this.endDate = requestDto.getEndDate();
         this.team = team;
-        this.imageUrl = imageUrl;
     }
-
-    public void setDistrict(List<District> district){
-        this.district = district;
-    }
-
-    public void setTheme(List<Theme> theme){
-        this.theme = theme;
+    public void update(ScheduleDto.RequestDto requestDto){
+        this.name = requestDto.getName();
+        this.startDate = requestDto.getStartDate();
+        this.endDate = requestDto.getEndDate();
+        this.dailySchedules = requestDto.getDailySchedules();
+        this.theme = requestDto.getTheme();
+        this.district = requestDto.getDistrict();
+        this.imageUrl = requestDto.getImageUrl();
     }
 }
