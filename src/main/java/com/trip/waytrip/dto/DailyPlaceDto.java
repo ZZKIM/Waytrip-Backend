@@ -31,6 +31,7 @@ public class DailyPlaceDto {
     public static class Response {
         private Long id;
         private PlaceDto.Response place;
+
     }
     @Getter
     @Setter
