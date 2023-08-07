@@ -22,4 +22,10 @@ public class Album{
     @ElementCollection(fetch = FetchType.LAZY)
     @Builder.Default
     private final Set<String> imageURLs = new LinkedHashSet<>();
+
+    public void addImageURL(String imageURL) {
+        if (imageURL != null && !imageURL.trim().isEmpty()) {
+            imageURLs.add(imageURL);
+        }
+    }
 }

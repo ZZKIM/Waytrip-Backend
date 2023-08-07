@@ -1,6 +1,7 @@
 package com.trip.waytrip.domain;
 
 
+import com.trip.waytrip.dto.UserDto;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -30,4 +31,13 @@ public class User {
     @JoinColumn(name = "team_id")
     @ManyToOne(optional = false)
     private Team team;
+
+    public void joinTeam(Team team) {
+        this.team = team;
+    }
+    public void updateProfile(UserDto.Request userDto){
+        this.nickname = userDto.getNickname();
+        this.email = userDto.getEmail();
+        this.profileUrl = userDto.getProfileUrl();
+    }
 }
