@@ -1,5 +1,6 @@
 package com.trip.waytrip.domain;
 
+import com.trip.waytrip.dto.ScheduleDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,4 +29,11 @@ public class DailySchedule {
 
     @OneToMany(mappedBy = "dailySchedule", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<DailyPlace> dailyPlaces = new ArrayList<>();
+    public DailySchedule(Schedule schedule, ScheduleDto.DailyScheduleRequestDto requestDto){
+        this.schedule = schedule;
+        this.date = requestDto.getDate();
+    }
+    public void addDailyPlace(DailyPlace dailyPlace){
+        dailyPlaces.add(dailyPlace);
+    }
 }

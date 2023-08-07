@@ -24,6 +24,14 @@ public class ScheduleDto {
     @Data
     @NoArgsConstructor
     @AllArgsConstructor
+    public static class DailyScheduleRequestDto {
+        private LocalDate date;
+        private Long dailyPlaceId;
+    }
+
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class RequestDto extends FirstRequestDto{
         List<DailySchedule> dailySchedules;
         List<Theme> theme;

@@ -1,10 +1,8 @@
 package com.trip.waytrip.domain;
 
+import com.trip.waytrip.dto.ScheduleDto;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +23,11 @@ public class DailyPlace {
     //@JoinColumn
     @OneToMany(mappedBy = "dailyPlace", cascade = CascadeType.ALL)
     private List<Memo> memos = new ArrayList<>();
-
+    @Setter
     @ManyToOne
     private Place place;
+
+    public void addMemo(Memo memo){
+        memos.add(memo);
+    }
 }

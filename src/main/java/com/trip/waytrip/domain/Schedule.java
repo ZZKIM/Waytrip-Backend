@@ -70,4 +70,7 @@ public class Schedule extends BaseTimeEntity {
         this.district = requestDto.getDistrict();
         this.imageUrl = requestDto.getImageUrl();
     }
+    public void addDailySchedule(DailySchedule dailySchedule){
+        dailySchedules.add(dailySchedule);
+    }
 }

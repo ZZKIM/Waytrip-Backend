@@ -1,12 +1,9 @@
 package com.trip.waytrip.service;
 
-import com.trip.waytrip.domain.Schedule;
-import com.trip.waytrip.domain.Team;
-import com.trip.waytrip.domain.User;
+import com.trip.waytrip.domain.*;
+import com.trip.waytrip.dto.PlaceDto;
 import com.trip.waytrip.dto.ScheduleDto;
-import com.trip.waytrip.repository.ScheduleRepository;
-import com.trip.waytrip.repository.TeamRepository;
-import com.trip.waytrip.repository.UserRepository;
+import com.trip.waytrip.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +18,10 @@ public class ScheduleService {
     private final ScheduleRepository scheduleRepository;
     private final TeamRepository teamRepository;
     private final UserRepository userRepository;
+    private final PlaceRepository placeRepository;
+    private final DailyPlaceRepository dailyPlaceRepository;
+    private final DailyScheduleRepository dailyScheduleRepository;
+
     private final UserService userService;
     public void createTeamAndFirstSchedule(ScheduleDto.FirstRequestDto requestDto, Long userId){
 
@@ -35,6 +36,27 @@ public class ScheduleService {
         userService.joinTeam(user.getId(), team.getId());
 
     }
+    public void createTotalSchedule(Long scheduleId, ScheduleDto.DailyScheduleRequestDto requestDto){
+        createDailySchedule(scheduleId, requestDto);
+    }
+    public void createDailySchedule(Long scheduleId, ScheduleDto.DailyScheduleRequestDto requestDto){
+        Schedule schedule = scheduleRepository.findById(scheduleId).orElseThrow();
+        DailySchedule dailySchedule = new DailySchedule(schedule, requestDto);
+        dailyScheduleRepository.save(dailySchedule);
+    }
+    public void addDailyPlaceToDailySchedule(DailySchedule dailySchedule, Long dailyPlaceId){
+        DailyPlace dailyPlace = dailyPlaceRepository.findById(dailyPlaceId).orElseThrow();
+        dailySchedule.addDailyPlace(dailyPlace);
+        dailyScheduleRepository.save(dailySchedule);
+    }
+    public void createDailyPlace(Long placeId){
+        Place place = placeRepository.findById(placeId).orElseThrow();
+        DailyPlace dailyPlace = new DailyPlace();
+        dailyPlace.setPlace(place);
+        dailyPlaceRepository.save(dailyPlace);
+
+    }
+
     // Retrieve all schedules
     public List<ScheduleDto.Response> getAllSchedules() {
         return scheduleRepository.findAll().stream()
