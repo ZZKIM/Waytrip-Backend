@@ -30,7 +30,7 @@ public class UserDto {
             this.nickname = user.getNickname();
             this.email = user.getEmail();
             this.profileUrl = user.getProfileUrl();
-            this.teamId =user.getTeam().getId();
+            //this.teamId =user.getUserTeams()getId();
         }
     }
 }

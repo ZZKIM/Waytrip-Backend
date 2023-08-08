@@ -3,11 +3,7 @@ package com.trip.waytrip.dto;
 import com.trip.waytrip.domain.Memo;
 import lombok.*;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+
 public class MemoDto {
     @Getter
     @Setter

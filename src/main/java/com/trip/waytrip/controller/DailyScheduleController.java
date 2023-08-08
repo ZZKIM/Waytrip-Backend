@@ -32,8 +32,8 @@ public class DailyScheduleController {
     }
 
     @PutMapping
-    public DailyScheduleDto.DailyScheduleResponse update(@RequestBody DailyScheduleDto.UpdateRequest request) {
-        return dailyScheduleService.update(request);
+    public ResponseEntity<HttpStatus> update(@RequestBody DailyScheduleDto.UpdateRequest request) {
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

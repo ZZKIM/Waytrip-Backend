@@ -37,19 +37,20 @@ public class DailyScheduleService {
     }
 
     public DailyScheduleDto.DailyScheduleResponse getById(Long id) {
-        DailySchedule dailySchedule = dailyScheduleRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("DailySchedule not found"));
-        return DailyScheduleMapper.INSTANCE.dailyScheduleToResponse(dailySchedule);
+        return dailyScheduleRepository
+                .findById(id)
+                .map(
+                        DailyScheduleDto.DailyScheduleResponse::new
+                )
+                .orElseThrow();
     }
 
-    public DailyScheduleDto.DailyScheduleResponse update(DailyScheduleDto.UpdateRequest request) {
+    public void update(DailyScheduleDto.UpdateRequest request) {
         DailySchedule dailySchedule = dailyScheduleRepository.findById(request.getId())
                 .orElseThrow(() -> new IllegalArgumentException("DailySchedule not found"));
 
-        dailySchedule.setDate(request.getDate());
-        DailySchedule updatedDailySchedule = dailyScheduleRepository.save(dailySchedule);
+        dailyScheduleRepository.save(dailySchedule);
 
-        return DailyScheduleMapper.INSTANCE.dailyScheduleToResponse(updatedDailySchedule);
     }
 
     public void delete(Long id) {

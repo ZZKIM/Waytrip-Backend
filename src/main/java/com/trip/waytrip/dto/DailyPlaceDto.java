@@ -7,11 +7,7 @@ import lombok.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+
 public class DailyPlaceDto {
     @Getter
     @Setter
@@ -32,6 +28,8 @@ public class DailyPlaceDto {
         private Long id;
         private PlaceDto.Response place;
 
+        public Response(DailyPlace dailyPlace) {
+        }
     }
     @Getter
     @Setter
@@ -42,7 +40,7 @@ public class DailyPlaceDto {
         private Long id;
         private Long dailyScheduleId;
         private Long placeId;
-        private List<MemoDto> memos;
+        private List<MemoDto.BasicMemoDto> memos;
 
         public BasicDailyPlaceDto(DailyPlace dailyPlace) {
             this.id = dailyPlace.getId();

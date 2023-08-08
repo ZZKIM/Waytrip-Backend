@@ -7,10 +7,6 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class DailyScheduleDto {
     @Getter
     @Setter
