@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 public class DailyScheduleService {
     private final DailyScheduleRepository dailyScheduleRepository;
     private final ScheduleRepository scheduleRepository;
-
+    //ok
     public void create(DailyScheduleDto.CreateRequest request) {
         Schedule schedule = scheduleRepository.findById(request.getScheduleId())
                 .orElseThrow(() -> new IllegalArgumentException("Schedule not found"));
