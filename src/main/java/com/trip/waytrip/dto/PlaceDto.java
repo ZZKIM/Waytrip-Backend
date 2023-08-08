@@ -1,6 +1,7 @@
 package com.trip.waytrip.dto;
 
 import com.trip.waytrip.domain.Address;
+import com.trip.waytrip.domain.DayPlace;
 import com.trip.waytrip.domain.Place;
 import com.trip.waytrip.domain.enumCategory.DistrictEnum;
 import com.trip.waytrip.domain.enumCategory.ThemeEnum;
@@ -56,6 +57,18 @@ public class PlaceDto {
             this.detail = place.getDetail();
             this.imageUrl = place.getImageUrl();
             this.keywords = place.getKeywords();
+        }
+        public Response(DayPlace place){
+            this.id = place.getId();
+            this.name = place.getPlace().getName();
+            this.specificAddress = place.getPlace().getAddress().getSpecificAddress();
+            this.latitude = place.getPlace().getAddress().getLatitude();
+            this.longitude = place.getPlace().getAddress().getLongitude();
+            this.openTime = place.getPlace().getOpenTime();
+            this.closeTime = place.getPlace().getCloseTime();
+            this.detail = place.getPlace().getDetail();
+            this.imageUrl = place.getPlace().getImageUrl();
+            this.keywords = place.getPlace().getKeywords();
         }
     }
 }

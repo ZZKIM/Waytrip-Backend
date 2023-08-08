@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 //확인 완료
 @Service
 @RequiredArgsConstructor
@@ -61,5 +63,15 @@ public class DayScheduleService {
                 .schedule(schedule)
                 .build();
         dayScheduleRepository.save(daySchedule);
+    }
+    public DayScheduleDto.Response getAllDaySchedule(Long scheduleId){
+        Schedule schedule = scheduleRepository.findById(scheduleId).orElseThrow();
+        DaySchedule daySchedule = dayScheduleRepository.findBySchedule(schedule);
+
+        return new DayScheduleDto.Response(daySchedule,
+                daySchedule.getDayPlaces()
+                .stream()
+                .map(PlaceDto.Response::new)
+                .collect(Collectors.toList()));
     }
 }

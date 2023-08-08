@@ -12,15 +12,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+//완료
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/schedules")
 public class ScheduleController {
     private final DayScheduleService dayScheduleService;//이게 그나마 나은 듯
     private final ScheduleService scheduleService;
-    @PostMapping
-    public ResponseEntity<HttpStatus> createTeamAndFirstSchedule(@RequestBody ScheduleDto.FirstRequestDto requestDto, Long userId) {
+    @PostMapping("/{userId}")
+    public ResponseEntity<HttpStatus> createTeamAndFirstSchedule(@RequestBody ScheduleDto.FirstRequestDto requestDto,@PathVariable(name = "userId") Long userId) {
         dayScheduleService.createTeamAndFirstSchedule(requestDto, userId);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -33,6 +33,13 @@ public class ScheduleController {
     public ResponseEntity<?> getAllImagesInAlbum(@PathVariable(name = "scheduleId")Long scheduleId){
         return new ResponseEntity<>(
                 scheduleService.getAllImagesInAlbum(scheduleId),
+                HttpStatus.OK
+        );
+    }
+    @GetMapping("/{scheduleId}")
+    public ResponseEntity<?> getSchedule(@PathVariable(name = "scheduleId")Long scheduleId){
+        return new ResponseEntity<>(
+                dayScheduleService.getAllDaySchedule(scheduleId),
                 HttpStatus.OK
         );
     }
