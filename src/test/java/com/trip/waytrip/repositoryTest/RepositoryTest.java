@@ -17,4 +17,6 @@ class RepositoryTest {
     @Autowired protected MemoRepository memoRepository;
     @Autowired protected TeamRepository teamRepository;
     @Autowired protected UserTeamRepository userTeamRepository;
+    @Autowired protected DayPlaceRepository dayPlaceRepository;
+    @Autowired protected DayScheduleRepository dayScheduleRepository;
 }

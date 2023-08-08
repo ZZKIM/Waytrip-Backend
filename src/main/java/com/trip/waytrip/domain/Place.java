@@ -26,12 +26,6 @@ public class Place {
     @Column(nullable = false)
     private String name;
 
-    @Enumerated(EnumType.STRING)
-    private ThemeEnum theme;
-
-    @Enumerated(EnumType.STRING)
-    private DistrictEnum district;
-
     @OneToOne(cascade = CascadeType.ALL)
     private Address address;
 
@@ -53,8 +47,6 @@ public class Place {
 
     public Place(PlaceDto.Request requestDto, Address address) {
         this.name = requestDto.getName();
-        this.theme = requestDto.getTheme();
-        this.district = requestDto.getDistrict();
         this.address = address;
         this.openTime = requestDto.getOpenTime();
         this.closeTime = requestDto.getCloseTime();
@@ -65,8 +57,6 @@ public class Place {
 
     public void update(PlaceDto.Request requestDto) {
         this.name = requestDto.getName();
-        this.theme = requestDto.getTheme();
-        this.district = requestDto.getDistrict();
         this.openTime = requestDto.getOpenTime();
         this.closeTime = requestDto.getCloseTime();
         this.detail = requestDto.getDetail();
