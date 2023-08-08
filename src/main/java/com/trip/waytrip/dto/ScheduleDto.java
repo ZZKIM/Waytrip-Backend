@@ -1,5 +1,6 @@
 package com.trip.waytrip.dto;
 
+import com.trip.waytrip.domain.Album;
 import com.trip.waytrip.domain.DailySchedule;
 import com.trip.waytrip.domain.Schedule;
 import com.trip.waytrip.domain.category.District;
@@ -8,6 +9,7 @@ import lombok.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 public class ScheduleDto {
@@ -58,5 +60,15 @@ public class ScheduleDto {
             this.imageUrl = schedule.getImageUrl();
         }
     }
-
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class ResponseAlbum{
+        private Long teamId;
+        Set<String> imageURLs;
+        public ResponseAlbum(Album album){
+            this.teamId = album.getTeam().getId();
+            this.imageURLs = album.getImageURLs();
+        }
+    }
 }

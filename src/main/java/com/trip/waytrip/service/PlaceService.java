@@ -24,6 +24,15 @@ public class PlaceService {
 
         placeRepository.save(place);
     }
+    @Transactional
+    public void createAllPlace(List<PlaceDto.Request> requestList) {
+        for (PlaceDto.Request requestDto : requestList) {
+            Address address = new Address(requestDto);
+            Place place = new Place(requestDto, address);
+
+            placeRepository.save(place);
+        }
+    }
 
     public List<PlaceDto.Response> getAllPlaces() {
         return placeRepository.findAll().stream()

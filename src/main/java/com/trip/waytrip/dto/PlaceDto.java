@@ -16,8 +16,6 @@ public class PlaceDto {
     @AllArgsConstructor
     public static class Request {
         private String name;
-        private ThemeEnum theme;
-        private DistrictEnum district;
 
         private String specificAddress;
         private Double latitude;

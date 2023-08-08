@@ -10,14 +10,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/places")
+@RequestMapping("/api/places")
 @RequiredArgsConstructor
 public class PlaceController {
     private final PlaceService placeService;
 
-    @PostMapping
+    @PostMapping("/place")
     public ResponseEntity<Void> createPlace(@RequestBody PlaceDto.Request requestDto) {
         placeService.createPlace(requestDto);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+    @PostMapping
+    public ResponseEntity<Void> createAllPlace(@RequestBody List<PlaceDto.Request> requestDtos) {
+        placeService.createAllPlace(requestDtos);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 

@@ -87,6 +87,14 @@ public class ScheduleService {
                         new IllegalArgumentException("Schedule not found.")
                 );
     }
+    public ScheduleDto.ResponseAlbum getAllImagesInAlbum(Long scheduleId){
+        return new ScheduleDto.ResponseAlbum(
+                scheduleRepository.findById(scheduleId)
+                        .orElseThrow()
+                        .getTeam()
+                        .getAlbum()
+        );
+    }
 
     // Update
     public void updateSchedule(Long id, ScheduleDto.RequestDto requestDto) {
