@@ -41,6 +41,7 @@ public class ScheduleService {
     public void createTotalSchedule(Long scheduleId, ScheduleDto.DailyScheduleRequestDto requestDto){
         createDailySchedule(scheduleId, requestDto);
     }
+    //ok
     public void createDailySchedule(Long scheduleId, ScheduleDto.DailyScheduleRequestDto requestDto){
         Schedule schedule = scheduleRepository.findById(scheduleId).orElseThrow();
         DailySchedule dailySchedule = new DailySchedule(schedule, requestDto);

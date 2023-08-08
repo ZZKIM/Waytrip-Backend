@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class DailyPlaceRepositoryTest extends ScheduleRepositoryTest {
+public class DailyPlaceRepositoryTest extends RepositoryTest {
     private Address address;
     private Place place;
     private DailySchedule dailySchedule;
@@ -34,7 +34,7 @@ public class DailyPlaceRepositoryTest extends ScheduleRepositoryTest {
     @Test
     @DisplayName("하루에 맞는 장소의 1개를 저장한다.")
     void save(){
-        saveTeamAndFirstSchedule();
+        //saveTeamAndFirstSchedule();
         //given
         placeRepository.save(place);
 

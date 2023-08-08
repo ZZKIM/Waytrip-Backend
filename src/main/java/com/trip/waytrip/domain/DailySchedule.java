@@ -34,6 +34,8 @@ public class DailySchedule {
         this.date = requestDto.getDate();
     }
     public void addDailyPlace(DailyPlace dailyPlace){
+
         dailyPlaces.add(dailyPlace);
+        dailyPlace.setDailySchedule(this);
     }
 }

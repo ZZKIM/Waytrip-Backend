@@ -17,8 +17,8 @@ public class DailyPlace {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @ManyToOne(optional = false)
+    @Setter
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private DailySchedule dailySchedule;
 
     //@JoinColumn
