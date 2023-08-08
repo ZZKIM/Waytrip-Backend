@@ -23,6 +23,7 @@ public class ScheduleService {
     private final DailyScheduleRepository dailyScheduleRepository;
 
     private final UserService userService;
+    private final PlaceService placeService;
     //OK
     public void createTeamAndFirstSchedule(ScheduleDto.FirstRequestDto requestDto, Long userId){
 
@@ -56,6 +57,17 @@ public class ScheduleService {
         dailyPlace.setPlace(place);
         dailyPlaceRepository.save(dailyPlace);
 
+    }
+    public void createPlaceAndDailyPlace(PlaceDto.Request requestDto){
+        Address address = new Address(requestDto);
+        Place place = new Place(requestDto, address);
+
+        placeRepository.save(place);
+
+        DailyPlace dailyPlace = DailyPlace.builder()
+                .place(place)
+                .build();
+        dailyPlaceRepository.save(dailyPlace);
     }
 
     // Retrieve all schedules

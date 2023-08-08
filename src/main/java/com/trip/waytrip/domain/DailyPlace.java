@@ -1,6 +1,7 @@
 package com.trip.waytrip.domain;
 
 import com.trip.waytrip.dto.ScheduleDto;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import lombok.*;
 
