@@ -21,6 +21,7 @@ public class DailyScheduleController {
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
+
     @GetMapping
     public List<DailyScheduleDto.DailyScheduleResponse> getAll() {
         return dailyScheduleService.getAll();
