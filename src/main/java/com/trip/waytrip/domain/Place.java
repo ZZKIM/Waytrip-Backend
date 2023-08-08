@@ -32,7 +32,7 @@ public class Place {
     @Enumerated(EnumType.STRING)
     private DistrictEnum district;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Address address;
 
     @Column
