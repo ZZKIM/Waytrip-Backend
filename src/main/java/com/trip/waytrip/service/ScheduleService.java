@@ -23,6 +23,7 @@ public class ScheduleService {
     private final DailyScheduleRepository dailyScheduleRepository;
 
     private final UserService userService;
+    //OK
     public void createTeamAndFirstSchedule(ScheduleDto.FirstRequestDto requestDto, Long userId){
 
         User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));

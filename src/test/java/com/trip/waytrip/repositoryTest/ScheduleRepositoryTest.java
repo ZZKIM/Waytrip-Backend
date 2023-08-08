@@ -1,9 +1,6 @@
 package com.trip.waytrip.repositoryTest;
 
-import com.trip.waytrip.domain.Place;
-import com.trip.waytrip.domain.Schedule;
-import com.trip.waytrip.domain.Team;
-import com.trip.waytrip.domain.User;
+import com.trip.waytrip.domain.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -40,9 +37,16 @@ public class ScheduleRepositoryTest extends RepositoryTest{
                 .team(team)
                 .build();
         Schedule schedule1 = scheduleRepository.save(schedule);
+        UserTeam userTeam = UserTeam.builder()
+                .user(user)
+                .team(team)
+                .build();
+
+        UserTeam userTeam1 = userTeamRepository.save(userTeam);
 
         //then
         assertThat(team).isEqualTo(team1);
         assertThat(schedule).isEqualTo(schedule1);
+        assertThat(userTeam).isEqualTo(userTeam1);
     }
 }

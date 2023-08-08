@@ -22,7 +22,7 @@ public class UserService {
     private final TeamRepository teamRepository;
     private final UserTeamRepository userTeamRepository;
 
-    // Create
+    // Create : OK
     @Transactional
     public void createUser(UserDto.Request requestDto) {
         User newUser = User.builder()
@@ -64,7 +64,7 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    // Join team
+    // Join team : OK
     @Transactional
     public void joinTeam(Long userId, Long teamId) {
         User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
