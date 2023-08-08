@@ -27,21 +27,21 @@ public class PlaceController {
         return new ResponseEntity<>(places, HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<PlaceDto.Response> getPlaceById(@PathVariable Long id) {
-        PlaceDto.Response place = placeService.getPlaceById(id);
-        return new ResponseEntity<>(place, HttpStatus.OK);
+    @GetMapping("/{placeId}")
+    public ResponseEntity<PlaceDto.Response> getPlaceById(@PathVariable(name = "placeId") Long placeId) {
+        PlaceDto.Response placeDto = placeService.getPlaceById(placeId);
+        return new ResponseEntity<>(placeDto, HttpStatus.OK);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Void> updatePlace(@PathVariable Long id, @RequestBody PlaceDto.Request requestDto) {
-        placeService.updatePlace(id, requestDto);
+    @PutMapping("/{placeId}")
+    public ResponseEntity<Void> updatePlace(@PathVariable(name = "placeId") Long placeId, @RequestBody PlaceDto.Request requestDto) {
+        placeService.updatePlace(placeId, requestDto);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletePlace(@PathVariable Long id) {
-        placeService.deletePlace(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    @DeleteMapping("/{placeId}")
+    public ResponseEntity<Void> deletePlace(@PathVariable(name = "placeId") Long placeId) {
+        placeService.deletePlace(placeId);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
