@@ -1,21 +1,20 @@
 package com.trip.waytrip.repositoryTest;
 
-import com.trip.waytrip.domain.Address;
-import com.trip.waytrip.domain.DayPlace;
-import com.trip.waytrip.domain.Place;
-import com.trip.waytrip.domain.Schedule;
+import com.trip.waytrip.domain.*;
 import com.trip.waytrip.repository.DayScheduleRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class DayScheduleTest extends RepositoryTest{
+    private User user;
     private Schedule schedule;
     private Address address;
     private Address address0;
@@ -36,6 +35,22 @@ public class DayScheduleTest extends RepositoryTest{
     private DayPlace dayPlace5;
     @BeforeEach
     void init() {
+        user = User.builder()
+                .email("email")
+                .nickname("가희")
+                .profileUrl("이미지")
+                .build();
+        schedule = Schedule.builder()
+                .name("제주도")
+                .imageUrl("image")
+                .startDate(LocalDate.of(2023,01,01))
+                .endDate(LocalDate.of(2023,01,02))
+                .team(
+                        teamRepository.save(
+                                new Team()
+                        )
+                )
+                .build();
         address = Address.builder()
                 .specificAddress("address")
                 .latitude(35.8905477)
@@ -161,5 +176,16 @@ public class DayScheduleTest extends RepositoryTest{
         dayPlaces.add(dayPlaceRepository.save(dayPlace4));
 
         assertThat(dayPlaces.size()).isEqualTo(6);
+        scheduleRepository.save(schedule);
+
+        DaySchedule daySchedule = DaySchedule.builder()
+                .date(LocalDate.of(2023,03,02))
+                .dayPlaces(dayPlaces)
+                .schedule(schedule)
+                .build();
+        DaySchedule daySchedule1 = dayScheduleRepository.save(daySchedule);
+
+        assertThat(daySchedule).isEqualTo(daySchedule1);
+
     }
 }
