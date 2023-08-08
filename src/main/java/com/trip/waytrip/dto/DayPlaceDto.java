@@ -2,23 +2,15 @@ package com.trip.waytrip.dto;
 
 import com.trip.waytrip.domain.Comment;
 import com.trip.waytrip.domain.DayPlace;
-import com.trip.waytrip.domain.Place;
-import com.trip.waytrip.domain.enumCategory.DistrictEnum;
-import com.trip.waytrip.domain.enumCategory.ThemeEnum;
 import lombok.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class DayPlaceDto {
-    public static class RequestDto{
-        Long id;
-    }
+
     public static class Response{
         private Long id;
         String name;
-        ThemeEnum theme;
-        DistrictEnum district;
         String specificAddress;
         Double latitude;
         Double longitude;
@@ -60,7 +52,7 @@ public class DayPlaceDto {
         Long id;
         String userName;
         String content;
-        public void CommentResponseDto(Comment comment){
+        public CommentResponseDto(Comment comment){
             this.id = comment.getId();
             this.userName = comment.getUser().getNickname();
             this.content = comment.getContent();

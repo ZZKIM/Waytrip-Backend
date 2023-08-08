@@ -1,6 +1,7 @@
 package com.trip.waytrip.service;
 
 import com.trip.waytrip.domain.Comment;
+import com.trip.waytrip.domain.DayPlace;
 import com.trip.waytrip.domain.User;
 import com.trip.waytrip.dto.DayPlaceDto;
 import com.trip.waytrip.repository.CommentRepository;
@@ -28,9 +29,13 @@ public class DayPlaceService {
                 .build());
     }
     public DayPlaceDto.Response getAllContentByPlace(Long dayPlaceId){
-        DayPlace dayPlace =
+        DayPlace dayPlace = dayPlaceRepository.findById(dayPlaceId).orElseThrow();
 
-        return dayPlaceRepository.findById(dayPlaceId).get().getComments().stream().map(DayPlaceDto.CommentResponseDto::new).collect(Collectors.toList());
+        return new DayPlaceDto.Response(dayPlace,
+                dayPlace.getComments().stream().map(
+                        DayPlaceDto.CommentResponseDto::new
+                ).collect(Collectors.toList())
+        );
     }
 
 }
